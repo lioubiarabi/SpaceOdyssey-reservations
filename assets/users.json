@@ -4,7 +4,7 @@
     "firstName": "Emma",
     "lastName": "Johnson",
     "username": "ejohnson",
-    "email": "emma.johnson@example.com",
+    "email": "test1@gmail.com",
     "password": "12345678"
   },
   {
@@ -12,7 +12,7 @@
     "firstName": "Michael",
     "lastName": "Chen",
     "username": "mchen",
-    "email": "michael.chen@example.com",
+    "email": "test2@gmail.com",
     "password": "12345678"
   },
   {
@@ -20,7 +20,7 @@
     "firstName": "Sophia",
     "lastName": "Rodriguez",
     "username": "srodriguez",
-    "email": "sophia.rodriguez@example.com",
+    "email": "test3@gmail.com",
     "password": "testtest"
   },
   {
@@ -28,7 +28,7 @@
     "firstName": "James",
     "lastName": "Williams",
     "username": "jwilliams",
-    "email": "james.williams@example.com",
+    "email": "test4@gmail.com",
     "password": "testtest"
   },
   {
@@ -36,7 +36,7 @@
     "firstName": "Olivia",
     "lastName": "Brown",
     "username": "obrown",
-    "email": "olivia.brown@example.com",
+    "email": "test5@gmail.com",
     "password": "testtest"
   }
 ]
