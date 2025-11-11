@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/notiflix/notiflix.css">
     <script>
         tailwind.config = {
             theme: {
@@ -147,7 +148,7 @@
                     <p class="text-gray-300">Access your account and journey details</p>
                 </div>
                 
-                <form class="space-y-6">
+                <form class="space-y-6" id="loginForm">
                     <div>
                         <label class="block text-gray-300 mb-2">Email Address</label>
                         <input type="email" class="form-input w-full px-4 py-3" placeholder="Enter your email" id="email">
@@ -244,6 +245,8 @@
     </footer>
 
     <script src="./assets/login.js"></script>
+
+    <script src="./assets/notiflix/notiflix.js"></script>
     <script>
         // Create stars background
         function createStars() {
