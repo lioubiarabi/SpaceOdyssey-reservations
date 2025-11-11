@@ -11,6 +11,7 @@ function login(email, password) {
             let user = data.find(user => user.email == email);
 
             if (user && user.password == password) {
+                delete user.password;
                 sessionStorage.setItem("user", JSON.stringify(user));
                 resolve("logged in successfuly");
 
