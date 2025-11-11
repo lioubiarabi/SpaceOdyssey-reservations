@@ -27,6 +27,7 @@ loginForm.addEventListener("submit", (e) => {
     });
 });
 
+//check if the user is logged in
 if(userLogin()) {
     Notiflix.Report.warning(
         "warning!",
@@ -37,3 +38,4 @@ if(userLogin()) {
         }
     );
 };
+

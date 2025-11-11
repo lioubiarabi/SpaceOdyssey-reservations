@@ -26,6 +26,42 @@ function login(email, password) {
 // check if the user is logged in and return the user info
 function userLogin() {
     let user = sessionStorage.getItem("user");
-    if(user) return JSON.parse(user);
-    else return false
+    let logoutBtns = document.querySelectorAll(".logout");
+    let loginBtns = document.querySelectorAll(".login");
+    if (user) {
+        // logout
+        logoutBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                // delete user info from storage
+                sessionStorage.removeItem("user");
+
+                Notiflix.Report.success(
+                    'Logged out successfully',
+                    'You will be redirected to the login page',
+                    'okay',
+                    function () {
+                        window.open("./login.html", "_self")
+                    }
+                );
+            })
+        });
+
+        // disable login button
+        loginBtns.forEach(btn=>{
+            btn.style.display = "none";
+        });
+
+        return JSON.parse(user);
+    }
+    else { 
+        // disable logout button
+        logoutBtns.forEach(btn=>{
+            btn.style.display = "none";
+        });
+
+        return false
+    }
 }
+
+
+

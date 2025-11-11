@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/notiflix/notiflix.css">
     <script>
         tailwind.config = {
             theme: {
@@ -155,7 +156,8 @@
                 <a href="destinations.html" class="nav-link hover:text-neon-blue transition-colors">Destinations</a>
                 <a href="booking.html" class="nav-link hover:text-neon-blue transition-colors">Booking</a>
                 <a href="about.html" class="nav-link hover:text-neon-blue transition-colors">About</a>
-                <a href="login.html" class="nav-link hover:text-neon-blue transition-colors">Login</a>
+                <a href="login.html" class="nav-link hover:text-neon-blue transition-colors login">Login</a>
+                <a href="#" class="nav-link hover:text-neon-blue transition-colors logout">logout</a>
             </div>
             
             <!-- Mobile menu button -->
@@ -173,7 +175,8 @@
                 <a href="destinations.html" class="hover:text-neon-blue transition-colors py-2 border-b border-neon-blue/20">Destinations</a>
                 <a href="booking.html" class="hover:text-neon-blue transition-colors py-2 border-b border-neon-blue/20">Booking</a>
                 <a href="about.html" class="hover:text-neon-blue transition-colors py-2 border-b border-neon-blue/20">About</a>
-                <a href="login.html" class="hover:text-neon-blue transition-colors py-2">Login</a>
+                <a href="login.html" class="hover:text-neon-blue transition-colors py-2 login">login</a>
+                <a class="hover:text-neon-blue transition-colors py-2 logout">logout</a>
             </div>
         </div>
     </nav>
@@ -370,6 +373,9 @@
         </div>
     </footer>
 
+    <script src="./assets/notiflix/notiflix.js"></script>
+    <script src="./assets/functions.js"></script>
+
     <script>
         // Create stars background
         function createStars() {
@@ -406,6 +412,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
         });
+
+        // check if the user is logged in
+        userLogin();
     </script>
 </body>
 </html>
