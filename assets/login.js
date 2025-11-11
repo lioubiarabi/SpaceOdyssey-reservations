@@ -27,3 +27,13 @@ loginForm.addEventListener("submit", (e) => {
     });
 });
 
+if(userLogin()) {
+    Notiflix.Report.warning(
+        "warning!",
+        "You're already logged in",
+        "Okay",
+        function () {
+            window.open("./index.html", "_self")
+        }
+    );
+};
