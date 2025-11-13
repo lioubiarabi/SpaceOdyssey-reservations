@@ -139,6 +139,18 @@ let passengerNumber = document.getElementById("passengers-number");
             }
         })
 
+        // when change accomendation
+
+        let accommodations = document.getElementById("accommodations");
+        let accommodationsCardInfo = document.getElementById("accommodations-card-info");
+
+        accommodations.addEventListener("change", (e)=>{
+            let val = e.target.value;
+
+            // display the card info and change the info
+            accommodations.style.display = "block";
+            
+        })
 
 
     } catch (error) {
