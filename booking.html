@@ -371,7 +371,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-6">
+                        <div class="mb-6" id="accommodations">
                             <label class="block mb-3 text-gray-300">Accommodation Type</label>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <label class="accommodation-card cursor-pointer">
@@ -405,7 +405,7 @@
                         </div>
 
                         <!-- accommondation card info -->
-                        <div id="accommodation-info-card" class="mb-6 p-6 border border-neon-cyan/30 rounded-xl bg-space-blue/50 backdrop-blur-sm ">
+                        <div id="accommodations-card-info" class="mb-6 p-6 border border-neon-cyan/30 rounded-xl bg-space-blue/50 backdrop-blur-sm hidden">
                             <div class="flex items-start gap-4">
                                 <div class="flex-1">
                                     
@@ -477,6 +477,37 @@
 
                         <div id="passengers-container">
 
+                        </div>
+                    </div>
+
+                    <div id="price-breakdown" class="mb-8 p-6 border border-neon-purple/30 rounded-xl bg-space-purple/30">
+                        <h2 class="font-orbitron text-2xl mb-6 text-glow">Price Breakdown</h2>
+                        
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center pb-3 border-b border-neon-blue/20">
+                                <div>
+                                    <p class="text-gray-300">Destination:</p>
+                                    <p id="breakdown-destination-name" class="text-sm text-gray-400"></p>
+                                </div>
+                                <p id="breakdown-destination-price" class="font-orbitron text-lg text-neon-blue">$0</p>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b border-neon-blue/20">
+                                <div>
+                                    <p class="text-gray-300">Accommodation:</p>
+                                    <p id="breakdown-accommodation-name" class="text-sm text-gray-400"></p>
+                                </div>
+                                <p id="breakdown-accommodation-price" class="font-orbitron text-lg text-neon-purple">$0</p>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b border-neon-blue/20">
+                                <div>
+                                    <p class="text-gray-300">Number of Passengers:</p>
+                                </div>
+                                <p id="breakdown-passengers-count" class="font-orbitron text-lg text-neon-cyan">0</p>
+                            </div>
+                            <div class="flex justify-between items-center pt-2">
+                                <p class="font-orbitron text-xl text-neon-cyan">TOTAL:</p>
+                                <p id="breakdown-total" class="font-orbitron text-2xl text-neon-cyan font-bold">$0</p>
+                            </div>
                         </div>
                     </div>
 
