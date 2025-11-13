@@ -350,18 +350,27 @@
                         <div class="mb-6">
                             <label class="block mb-3 text-gray-300">Accommodation Type</label>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div class="accommodation-card" >
-                                    <h3 class="font-orbitron text-lg mb-2 text-neon-blue">Standard Cabin</h3>
-                                    <p class="text-gray-300 text-sm mb-2">Comfortable private quarters with basic amenities</p>
-                                </div>
-                                <div class="accommodation-card">
-                                    <h3 class="font-orbitron text-lg mb-2 text-neon-purple">Luxury Suite</h3>
-                                    <p class="text-gray-300 text-sm mb-2">Spacious suite with premium amenities and viewports</p>
-                                </div>
-                                <div class="accommodation-card" >
-                                    <h3 class="font-orbitron text-lg mb-2 text-neon-cyan">Zero-G Pod</h3>
-                                    <p class="text-gray-300 text-sm mb-2">Advanced accommodation with zero-gravity experience</p>
-                                </div>
+                                <label class="accommodation-card cursor-pointer">
+                                    <input type="radio" name="accommodation" value="standard" class="hidden accommodation-radio">
+                                    <div class="accommodation-content">
+                                        <h3 class="font-orbitron text-lg mb-2 text-neon-blue">Standard Cabin</h3>
+                                        <p class="text-gray-300 text-sm mb-2">Comfortable private quarters with basic amenities</p>
+                                    </div>
+                                </label>
+                                <label class="accommodation-card cursor-pointer">
+                                    <input type="radio" name="accommodation" value="luxury" class="hidden accommodation-radio">
+                                    <div class="accommodation-content">
+                                        <h3 class="font-orbitron text-lg mb-2 text-neon-purple">Luxury Suite</h3>
+                                        <p class="text-gray-300 text-sm mb-2">Spacious suite with premium amenities and viewports</p>
+                                    </div>
+                                </label>
+                                <label class="accommodation-card cursor-pointer">
+                                    <input type="radio" name="accommodation" value="zero-g" class="hidden accommodation-radio">
+                                    <div class="accommodation-content">
+                                        <h3 class="font-orbitron text-lg mb-2 text-neon-cyan">Zero-G Pod</h3>
+                                        <p class="text-gray-300 text-sm mb-2">Advanced accommodation with zero-gravity experience</p>
+                                    </div>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -384,7 +393,7 @@
                                     </div>
                                     <div>
                                         <label class="block mb-2 text-gray-300">Last Name</label>
-                                        <input type="text"  placeholder="Enter your last name" required>
+                                        <input type="text"  placeholder="Enter your last name"  required>
                                     </div>
                                 </div>
                                 
@@ -547,6 +556,21 @@
             createStars();
         });
 
+        // Accommodation
+        const accommodationCards = document.querySelectorAll('.accommodation-card');
+        const accommodationRadios = document.querySelectorAll('.accommodation-radio');
+        
+        accommodationCards.forEach(card => {
+            card.addEventListener('click', function() {
+                accommodationCards.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                const radio = this.querySelector('.accommodation-radio');
+                if (radio) {
+                    radio.checked = true;
+                }
+            });
+        });
+
         // for the login and logout
         const userProfileBtn = document.getElementById('user-profile-btn');
         const userDropdown = document.getElementById('user-dropdown');
@@ -557,6 +581,7 @@
             });
             
         }
+        
 
         // check if the user is logged in
         let user = userLogin();
