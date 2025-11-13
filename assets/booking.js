@@ -18,6 +18,7 @@ let destinationInfoCard = document.getElementById("destination-info-card");
         destination.addEventListener("change", (e) => {
             let index = e.target.value;
             destinationInfoCard.style.display = "block";
+            document.getElementById("destination-img").src = destinationArray[index].image ;
             document.getElementById("destination-name").innerHTML = destinationArray[index].name ;
             document.getElementById("destination-description").innerHTML = destinationArray[index].description ;
             document.getElementById("destination-duration").innerHTML = destinationArray[index].travelDuration ;
