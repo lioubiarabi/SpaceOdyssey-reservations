@@ -1,4 +1,4 @@
-let booking = [];
+let booking = {};
 let destination = document.getElementById("destination");
 let destinationInfoCard = document.getElementById("destination-info-card");
 
@@ -25,6 +25,9 @@ let destinationInfoCard = document.getElementById("destination-info-card");
             document.getElementById("destination-distance").innerHTML = destinationArray[index].distance ;
             document.getElementById("destination-temperature").innerHTML = destinationArray[index].temperature ;
             document.getElementById("destination-price").innerHTML = destinationArray[index].price + " $" ;
+
+            // add the destination to booking object
+            booking.destination = destinationArray[index];
         });
 
 
