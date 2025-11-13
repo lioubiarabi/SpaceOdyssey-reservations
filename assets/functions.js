@@ -26,11 +26,13 @@ function login(email, password) {
 // check if the user is logged in and return the user info
 function userLogin() {
     let user = sessionStorage.getItem("user");
-    let logoutBtns = document.querySelectorAll(".logout");
-    let loginBtns = document.querySelectorAll(".login");
+    let logoutPart = document.querySelectorAll(".logout");
+    let logoutBtn = document.querySelectorAll(".logout-btn");
+    let loginBtn = document.querySelectorAll(".login");
+    console.log(logoutBtn)
     if (user) {
         // logout
-        logoutBtns.forEach(btn => {
+        logoutBtn.forEach(btn => {
             btn.addEventListener("click", () => {
                 // delete user info from storage
                 sessionStorage.removeItem("user");
@@ -47,15 +49,15 @@ function userLogin() {
         });
 
         // disable login button
-        loginBtns.forEach(btn=>{
+        loginBtn.forEach(btn=>{
             btn.style.display = "none";
         });
 
         return JSON.parse(user);
     }
     else { 
-        // disable logout button
-        logoutBtns.forEach(btn=>{
+        // disable logout part
+        logoutPart.forEach(btn=>{
             btn.style.display = "none";
         });
 
