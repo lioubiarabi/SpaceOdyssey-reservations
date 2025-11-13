@@ -4,6 +4,7 @@
     let destinationData = await fetch("./assets/destinations.json");
     let destinationArray = await destinationData.json();
 
+    console.log(destinationArray)
 
 })()
 

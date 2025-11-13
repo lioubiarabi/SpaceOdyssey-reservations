@@ -29,7 +29,6 @@ function userLogin() {
     let logoutPart = document.querySelectorAll(".logout");
     let logoutBtn = document.querySelectorAll(".logout-btn");
     let loginBtn = document.querySelectorAll(".login");
-    console.log(logoutBtn)
     if (user) {
         // logout
         logoutBtn.forEach(btn => {
