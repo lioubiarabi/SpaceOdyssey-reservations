@@ -287,6 +287,37 @@
             </p>
         </section>
 
+        
+        <!-- Bookings list -->
+        <section class="max-w-6xl mx-auto">
+            <div class="mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex gap-4">
+                    <button
+                        class="filter-btn active px-4 py-2 rounded-lg border border-neon-blue/30 hover:bg-neon-blue/10 transition-colors"
+                        data-filter="all">
+                        All Missions
+                    </button>
+                    <button
+                        class="filter-btn px-4 py-2 rounded-lg border border-neon-blue/30 hover:bg-neon-blue/10 transition-colors"
+                        data-filter="confirmed">
+                        Confirmed
+                    </button>
+                    <button
+                        class="filter-btn px-4 py-2 rounded-lg border border-neon-blue/30 hover:bg-neon-blue/10 transition-colors"
+                        data-filter="pending">
+                        Pending
+                    </button>
+                </div>
+                <div class="text-gray-400">
+                    <span id="total-bookings">0</span> Total Bookings
+                </div>
+            </div>
+
+            <!-- Bookings list -->
+            <div id="bookings-container">
+            </div>
+
+        </section>
     </main>
 
     <!-- Footer -->
