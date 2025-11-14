@@ -2,6 +2,8 @@ let booking = {};
 let destination = document.getElementById("destination");
 let destinationInfoCard = document.getElementById("destination-info-card");
 let passengerNumber = document.getElementById("passengers-number");
+let accommodationCards = document.querySelectorAll('.accommodation-card');
+let accommodationsCardInfo = document.getElementById("accommodations-card-info");
 
 // get destinations
 (async () => {
@@ -143,9 +145,6 @@ let passengerNumber = document.getElementById("passengers-number");
 
         // when change accomendation
 
-        const accommodationCards = document.querySelectorAll('.accommodation-card');
-        let accommodationsCardInfo = document.getElementById("accommodations-card-info");
-
         accommodationCards.forEach(card => {
             card.addEventListener('click', function () {
                 accommodationCards.forEach(c => c.classList.remove('selected'));
@@ -163,6 +162,9 @@ let passengerNumber = document.getElementById("passengers-number");
                 document.getElementById("accommodation-category").innerText = targetAccommodation.category;
                 document.getElementById("accommodation-space").innerText = targetAccommodation.size;
                 document.getElementById("accommodation-cost").innerText = targetAccommodation.pricePerDay + "$/Day";
+
+                // update booking info
+                booking.accommodation = targetAccommodation;
             });
         });
 
