@@ -1,4 +1,4 @@
-let booking = {};
+let booking = { passengerNumber: 1 };
 let destination = document.getElementById("destination");
 let destinationInfoCard = document.getElementById("destination-info-card");
 let passengerNumber = document.getElementById("passengers-number");
@@ -150,6 +150,9 @@ let accommodationsCardInfo = document.getElementById("accommodations-card-info")
 
                     break;
             }
+
+            // update total price
+            updatePrice();
         })
 
         // when change accomendation
@@ -190,11 +193,22 @@ let accommodationsCardInfo = document.getElementById("accommodations-card-info")
 // update total price function
 
 function updatePrice() {
+    let duration = booking.destination?.TotalDuration || 0;
+    let pricePerDay = booking.accommodation?.pricePerDay || 0;
+    let accommodationTotal = duration * pricePerDay;
+    let destinationPrice = booking.destination?.price || 0;
+
     document.getElementById("breakdown-destination-name").innerText = booking.destination.name;
-    document.getElementById("breakdown-destination-price").innerText = booking.destination.price + "$";
+    document.getElementById("breakdown-destination-price").innerText = destinationPrice + "$";
     document.getElementById("breakdown-accommodation-name").innerText = booking.accommodation?.name || "Not selected";
-    document.getElementById("breakdown-accommodation-price").innerText = booking.accommodation?.pricePerDay || 0;
-    document.getElementById("breakdown-destination-duration").innerText = booking.destination.TotalDuration;
+    document.getElementById("breakdown-accommodation-price").innerText = pricePerDay;
+    document.getElementById("breakdown-destination-duration").innerText = duration;
     document.getElementById("breakdown-passengers-count").innerText = booking.passengerNumber;
+
+    // calculat the total
+    let total = accommodationTotal + destinationPrice;
+    document.getElementById("breakdown-total").innerText = total;
+
+    booking.totalPrice = total;
 
 }
