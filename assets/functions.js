@@ -84,7 +84,7 @@ function bookingsDB(action, username, obj, id = newId ) {
 
                 break;
             case "get":
-                if (Object.keys(bookings).length > 0) {
+                if (Object.keys(bookings[username]).length > 0) {
                     resolve(bookings[username]);
                 } else {
                     reject(`No bookings found for user: ${username}`);
