@@ -37,8 +37,11 @@ let accommodationsCardInfo = document.getElementById("accommodations-card-info")
             // display the accommodations section
             document.getElementById("accommodations").style.display = "block";
             accommodationCards.forEach(c => c.classList.add('hidden'));
-            destinationArray[index].accommodations.forEach(v=>document.getElementById(v).classList.remove('hidden'));
-            
+            destinationArray[index].accommodations.forEach(v => document.getElementById(v).classList.remove('hidden'));
+
+            // update total price
+            updatePrice();
+
         });
 
         // when change passenger number
@@ -153,6 +156,7 @@ let accommodationsCardInfo = document.getElementById("accommodations-card-info")
 
         accommodationCards.forEach(card => {
             card.addEventListener('click', function () {
+
                 accommodationCards.forEach(c => c.classList.remove('selected'));
                 this.classList.add('selected');
                 const radio = this.querySelector('.accommodation-radio');
@@ -171,6 +175,9 @@ let accommodationsCardInfo = document.getElementById("accommodations-card-info")
 
                 // update booking info
                 booking.accommodation = targetAccommodation;
+
+                // update total price
+                updatePrice();
             });
         });
 
@@ -179,3 +186,15 @@ let accommodationsCardInfo = document.getElementById("accommodations-card-info")
         console.log(error)
     }
 })();
+
+// update total price function
+
+function updatePrice() {
+    document.getElementById("breakdown-destination-name").innerText = booking.destination.name;
+    document.getElementById("breakdown-destination-price").innerText = booking.destination.price + "$";
+    document.getElementById("breakdown-accommodation-name").innerText = booking.accommodation?.name || "Not selected";
+    document.getElementById("breakdown-accommodation-price").innerText = booking.accommodation?.pricePerDay || 0;
+    document.getElementById("breakdown-destination-duration").innerText = booking.destination.TotalDuration;
+    document.getElementById("breakdown-passengers-count").innerText = booking.passengerNumber;
+
+}
