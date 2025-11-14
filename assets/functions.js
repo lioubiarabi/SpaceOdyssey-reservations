@@ -48,20 +48,41 @@ function userLogin() {
         });
 
         // disable login button
-        loginBtn.forEach(btn=>{
+        loginBtn.forEach(btn => {
             btn.style.display = "none";
         });
 
         return JSON.parse(user);
     }
-    else { 
+    else {
         // disable logout part
-        logoutPart.forEach(btn=>{
+        logoutPart.forEach(btn => {
             btn.style.display = "none";
         });
 
         return false
     }
+}
+
+// bookings database
+let newId = "ID" + (Math.floor(Math.random() * 90000) + 10000);
+function bookings(action, username, id = newId, obj) {
+    let bookings = localStorage.getItem("bookings") || [];
+    return new Promise((resolve, reject) => {
+        switch (action) {
+            case "add":
+                bookings[username][newId] = obj;
+                resolve(id);
+                break;
+            case "delete":
+
+                break;
+            case "get":
+                let userBookings = localStorage.getItem("bookings")[username] || {};
+                resolve(userBookings);
+                break;
+        }
+    });
 }
 
 
