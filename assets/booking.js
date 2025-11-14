@@ -4,6 +4,7 @@ let destinationInfoCard = document.getElementById("destination-info-card");
 let passengerNumber = document.getElementById("passengers-number");
 let accommodationCards = document.querySelectorAll('.accommodation-card');
 let accommodationsCardInfo = document.getElementById("accommodations-card-info");
+let form = document.getElementById("booking-form");
 
 // get destinations
 (async () => {
@@ -184,6 +185,11 @@ let accommodationsCardInfo = document.getElementById("accommodations-card-info")
             });
         });
 
+        form.addEventListener("submit", (e)=>{
+            e.preventDefault();
+            
+        })
+
 
     } catch (error) {
         console.log(error)
@@ -211,4 +217,8 @@ function updatePrice() {
 
     booking.totalPrice = total;
 
+}
+
+function validate() {
+    
 }
