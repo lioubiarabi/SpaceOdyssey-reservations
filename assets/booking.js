@@ -72,28 +72,28 @@ let form = document.getElementById("booking-form");
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                         <div>
                                             <label class="block mb-2 text-gray-300">First Name</label>
-                                            <input type="text" placeholder="Enter first name" required>
+                                            <input type="text" name="firstName" placeholder="Enter first name" required>
                                         </div>
                                         <div>
                                             <label class="block mb-2 text-gray-300">Last Name</label>
-                                            <input type="text"  placeholder="Enter last name" required>
+                                            <input type="text" name="lastName" placeholder="Enter last name" required>
                                         </div>
                                     </div>
                                     
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                         <div>
                                             <label class="block mb-2 text-gray-300">Email Address</label>
-                                            <input type="email" placeholder="Enter email" required>
+                                            <input type="email" name="email" placeholder="Enter email" required>
                                         </div>
                                         <div>
                                             <label class="block mb-2 text-gray-300">Phone Number</label>
-                                            <input type="tel" placeholder="Enter phone number" required>
+                                            <input type="tel" name="phone" placeholder="Enter phone number" required>
                                         </div>
                                     </div>
                                     
                                     <div>
                                         <label class="block mb-2 text-gray-300">Special Requirements</label>
-                                        <textarea class="p-4" rows="3" placeholder="Any special requirements or notes..."></textarea>
+                                        <textarea class="p-4" name="note" rows="3" placeholder="Any special requirements or notes..."></textarea>
                                     </div>
                                 </div>
                     `;
@@ -121,28 +121,28 @@ let form = document.getElementById("booking-form");
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                                 <div>
                                                     <label class="block mb-2 text-gray-300">First Name</label>
-                                                    <input type="text" placeholder="Enter first name" required>
+                                                    <input type="text" name="firstName" placeholder="Enter first name" required>
                                                 </div>
                                                 <div>
                                                     <label class="block mb-2 text-gray-300">Last Name</label>
-                                                    <input type="text"  placeholder="Enter last name" required>
+                                                    <input type="text" name="lastName"  placeholder="Enter last name" required>
                                                 </div>
                                             </div>
                                             
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                                 <div>
                                                     <label class="block mb-2 text-gray-300">Email Address</label>
-                                                    <input type="email" placeholder="Enter email" required>
+                                                    <input type="email" name="email" placeholder="Enter email" required>
                                                 </div>
                                                 <div>
                                                     <label class="block mb-2 text-gray-300">Phone Number</label>
-                                                    <input type="tel" placeholder="Enter phone number" required>
+                                                    <input type="tel" name="phone" placeholder="Enter phone number" required>
                                                 </div>
                                             </div>
                                             
                                             <div>
                                                 <label class="block mb-2 text-gray-300">Special Requirements</label>
-                                                <textarea class="p-4" rows="3" placeholder="Any special requirements or notes..."></textarea>
+                                                <textarea class="p-4" name="note" rows="3" placeholder="Any special requirements or notes..."></textarea>
                                             </div>
                                         </div>
                             `;
@@ -187,7 +187,14 @@ let form = document.getElementById("booking-form");
 
         form.addEventListener("submit", (e)=>{
             e.preventDefault();
-            
+
+            // get personal info
+            let personalInfo = {};
+            let personalInputs = document.getElementById("personal-info").querySelectorAll("input, textarea");
+            for(let input of personalInputs) {
+                personalInfo[input.getAttribute("name")] = input.value;
+            }
+            booking.personalInfo = personalInfo;
         })
 
 
