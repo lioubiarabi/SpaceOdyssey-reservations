@@ -445,7 +445,7 @@
                     <div class="mb-8 " >
                         <h2 class="font-orbitron text-2xl mb-6 text-glow">Personal Information</h2>
 
-                        <div class="passenger-block mb-6 p-6 border border-neon-blue/30 rounded-xl bg-space-purple/30" id="personal-info">
+                        <div class="personal-block mb-6 p-6 border border-neon-blue/30 rounded-xl bg-space-purple/30" id="personal-info">
                             <div class="flex justify-between items-center mb-4">
                                 <h3 class="font-orbitron text-lg text-neon-blue">Primary Passenger</h3>
                             </div>
@@ -637,7 +637,7 @@
 
 
         // check if the user is logged in
-        let user = userLogin();
+        var user = userLogin();
 
         if (user) {
             document.getElementById("username").innerText = `${user.firstName} ${user.lastName}`;

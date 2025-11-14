@@ -5,6 +5,7 @@ let passengerNumber = document.getElementById("passengers-number");
 let accommodationCards = document.querySelectorAll('.accommodation-card');
 let accommodationsCardInfo = document.getElementById("accommodations-card-info");
 let form = document.getElementById("booking-form");
+var user = userLogin();
 
 // get destinations
 (async () => {
@@ -168,7 +169,6 @@ let form = document.getElementById("booking-form");
                     radio.checked = true;
                 }
                 let targetAccommodation = accommodationsArray[radio.value];
-                console.log(accommodationsArray)
 
                 // display the card info and change the info
                 accommodationsCardInfo.style.display = "block";
@@ -185,16 +185,43 @@ let form = document.getElementById("booking-form");
             });
         });
 
-        form.addEventListener("submit", (e)=>{
+        form.addEventListener("submit", (e) => {
             e.preventDefault();
 
             // get personal info
             let personalInfo = {};
+            let passengersInfo = [];
+
             let personalInputs = document.getElementById("personal-info").querySelectorAll("input, textarea");
-            for(let input of personalInputs) {
+            for (let input of personalInputs) {
                 personalInfo[input.getAttribute("name")] = input.value;
             }
             booking.personalInfo = personalInfo;
+
+            //get other passengers info
+            document.querySelectorAll(".passenger-block").forEach(block => {
+                let passengerInfo = {};
+                let passangerInputs = block.querySelectorAll("input, textarea");
+                for (let input of passangerInputs) {
+                    passengerInfo[input.getAttribute("name")] = input.value;
+                }
+                passengersInfo.push(passengerInfo);
+            })
+            booking.passengersInfo = passengersInfo;
+
+            console.log(booking)
+
+
+            if(user){
+                //add a booking
+                bookingsDB("add", user.username, booking).then(r => {
+                    Notiflix.Notify.success('added successfuly');
+                    window.open("./mybookings.html?id="+r, "_self");
+                })
+            } else {
+
+            }
+
         })
 
 
@@ -227,5 +254,5 @@ function updatePrice() {
 }
 
 function validate() {
-    
+
 }

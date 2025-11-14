@@ -66,20 +66,30 @@ function userLogin() {
 
 // bookings database
 let newId = "ID" + (Math.floor(Math.random() * 90000) + 10000);
-function bookings(action, username, id = newId, obj) {
-    let bookings = localStorage.getItem("bookings") || [];
+function bookingsDB(action, username, obj, id = newId ) {
+    let storedData = localStorage.getItem("bookings");
+    let bookings = storedData ? JSON.parse(storedData) : {};
+    if (!bookings[username]) {
+        bookings[username] = {};
+    }
+
     return new Promise((resolve, reject) => {
         switch (action) {
             case "add":
                 bookings[username][newId] = obj;
+                localStorage.setItem("bookings", JSON.stringify(bookings));
                 resolve(id);
                 break;
             case "delete":
 
                 break;
             case "get":
-                let userBookings = localStorage.getItem("bookings")[username] || {};
-                resolve(userBookings);
+                resolve(bookings)
+                if (Object.keys(bookings[username]).length > 0) {
+                    resolve(bookings[username]);
+                } else {
+                    reject(`No bookings found for user: ${username}`);
+                }
                 break;
         }
     });
