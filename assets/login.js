@@ -14,6 +14,11 @@ loginForm.addEventListener("submit", (e) => {
             "logged in successfuly",
             'Okay',
         );
+
+        // check if there's a redirection first
+        const isThereRedirection = new URLSearchParams(window.location.search).get('redirect');
+        if(isThereRedirection) window.open("./mybookings.html", "_self");
+
         // check if there's a booking
         const isThereBooking = new URLSearchParams(window.location.search).get('booking');
         if (isThereBooking) {

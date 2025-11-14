@@ -815,6 +815,8 @@
 
             if (user) {
                 document.getElementById("username").innerText = `${user.firstName} ${user.lastName}`;
+            } else {
+                window.open("./login.html?redirect=true","_self")
             }
         </script>
 </body>
