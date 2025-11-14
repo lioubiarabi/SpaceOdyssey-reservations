@@ -9,6 +9,8 @@ let passengerNumber = document.getElementById("passengers-number");
     try {
         let destinationData = await fetch("./assets/destinations.json");
         let destinationArray = await destinationData.json();
+        let accommodationsData = await fetch("./assets/accommodations.json");
+        let accommodationsArray = await accommodationsData.json();
 
         //render the destinations in select destination
         destinationArray.forEach((dest, index) => {
@@ -141,16 +143,28 @@ let passengerNumber = document.getElementById("passengers-number");
 
         // when change accomendation
 
-        let accommodations = document.getElementById("accommodations");
+        const accommodationCards = document.querySelectorAll('.accommodation-card');
         let accommodationsCardInfo = document.getElementById("accommodations-card-info");
 
-        accommodations.addEventListener("change", (e)=>{
-            let val = e.target.value;
+        accommodationCards.forEach(card => {
+            card.addEventListener('click', function () {
+                accommodationCards.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                const radio = this.querySelector('.accommodation-radio');
+                if (radio) {
+                    radio.checked = true;
+                }
+                let targetAccommodation = accommodationsArray[radio.value];
+                console.log(accommodationsArray)
 
-            // display the card info and change the info
-            accommodations.style.display = "block";
-            
-        })
+                // display the card info and change the info
+                accommodationsCardInfo.style.display = "block";
+
+                document.getElementById("accommodation-category").innerText = targetAccommodation.category;
+                document.getElementById("accommodation-space").innerText = targetAccommodation.size;
+                document.getElementById("accommodation-cost").innerText = targetAccommodation.pricePerDay + "$/Day";
+            });
+        });
 
 
     } catch (error) {

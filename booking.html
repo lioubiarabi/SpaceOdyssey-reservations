@@ -412,9 +412,9 @@
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         <div class="bg-space-purple/50 p-3 rounded-lg border border-neon-blue/20">
                                             <div class="text-gray-400 text-sm mb-1">
-                                                <i class="fas fa-bed mr-1"></i>Features
+                                                <i class="fas fa-bed mr-1"></i>category
                                             </div>
-                                            <div id="accommodation-features" class="text-neon-blue text-sm"></div>
+                                            <div id="accommodation-category" class="text-neon-blue text-sm"></div>
                                         </div>
 
                                         <div class="bg-space-purple/50 p-3 rounded-lg border border-neon-blue/20">
@@ -617,20 +617,7 @@
             createStars();
         });
 
-        // Accommodation
-        const accommodationCards = document.querySelectorAll('.accommodation-card');
-        const accommodationRadios = document.querySelectorAll('.accommodation-radio');
-
-        accommodationCards.forEach(card => {
-            card.addEventListener('click', function () {
-                accommodationCards.forEach(c => c.classList.remove('selected'));
-                this.classList.add('selected');
-                const radio = this.querySelector('.accommodation-radio');
-                if (radio) {
-                    radio.checked = true;
-                }
-            });
-        });
+        
 
         // for the login and logout
         const userProfileBtn = document.getElementById('user-profile-btn');
