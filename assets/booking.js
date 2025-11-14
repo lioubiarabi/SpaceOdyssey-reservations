@@ -209,8 +209,6 @@ var user = userLogin();
             })
             booking.passengersInfo = passengersInfo;
 
-            console.log(booking)
-
 
             if(user){
                 //add a booking
@@ -219,7 +217,9 @@ var user = userLogin();
                     window.open("./mybookings.html?id="+r, "_self");
                 })
             } else {
-
+                // save the booking tomporairlly until the user looged in
+                localStorage.setItem("guestBooking", JSON.stringify(booking));
+                window.open(`./login.html?booking=true`, "_self");
             }
 
         })
