@@ -208,6 +208,7 @@ var user = userLogin();
                 passengersInfo.push(passengerInfo);
             })
             booking.passengersInfo = passengersInfo;
+            booking.departureDate = document.getElementById("departure-date").value;
 
 
             if (user) {
