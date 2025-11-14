@@ -33,6 +33,12 @@ let accommodationsCardInfo = document.getElementById("accommodations-card-info")
 
             // add the destination to booking object
             booking.destination = destinationArray[index];
+
+            // display the accommodations section
+            document.getElementById("accommodations").style.display = "block";
+            accommodationCards.forEach(c => c.classList.add('hidden'));
+            destinationArray[index].accommodations.forEach(v=>document.getElementById(v).classList.remove('hidden'));
+            
         });
 
         // when change passenger number
