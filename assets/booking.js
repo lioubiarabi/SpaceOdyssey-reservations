@@ -210,11 +210,13 @@ var user = userLogin();
             booking.passengersInfo = passengersInfo;
 
 
-            if(user){
+            if (user) {
                 //add a booking
                 bookingsDB("add", user.username, booking).then(r => {
                     Notiflix.Notify.success('added successfuly');
-                    window.open("./mybookings.html?id="+r, "_self");
+                    setTimeout(() => {
+                        window.open("./mybookings.html?id=" + r, "_self");
+                    }, 2000)
                 })
             } else {
                 // save the booking tomporairlly until the user looged in

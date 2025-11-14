@@ -13,7 +13,7 @@ function login(email, password) {
             if (user && user.password == password) {
                 delete user.password;
                 sessionStorage.setItem("user", JSON.stringify(user));
-                resolve("logged in successfuly");
+                resolve(user);
 
             } else {
                 reject("email/password is incorrect")
