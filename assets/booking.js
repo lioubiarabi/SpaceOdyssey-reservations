@@ -249,7 +249,7 @@ function updatePrice() {
 
     // calculat the total
     let total = accommodationTotal + destinationPrice;
-    document.getElementById("breakdown-total").innerText = total;
+    document.getElementById("breakdown-total").innerText = total + "$";
 
     booking.totalPrice = total;
 

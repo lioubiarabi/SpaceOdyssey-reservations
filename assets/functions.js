@@ -80,12 +80,11 @@ function bookingsDB(action, username, obj, id = newId ) {
                 localStorage.setItem("bookings", JSON.stringify(bookings));
                 resolve(id);
                 break;
-            case "delete":
+            case "cancel":
 
                 break;
             case "get":
-                resolve(bookings)
-                if (Object.keys(bookings[username]).length > 0) {
+                if (Object.keys(bookings).length > 0) {
                     resolve(bookings[username]);
                 } else {
                     reject(`No bookings found for user: ${username}`);

@@ -419,79 +419,6 @@
             <!-- Bookings list -->
             <div id="bookings-container">
 
-                <div class="booking-card card-hover p-6 mb-6">
-                    <div class="flex flex-col md:flex-row gap-6">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-20 h-20 rounded-full bg-gradient-to-r from-gray-400 to-gray-200 flex items-center justify-center glow">
-                                <i class="fas fa-moon text-gray-700 text-3xl"></i>
-                            </div>
-                        </div>
-
-                        <div class="flex-1">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                                <div>
-                                    <h3 class="font-orbitron text-2xl mb-1 text-neon-cyan">The Moon</h3>
-                                    <p class="text-gray-400 text-sm">Booking ID: BK001</p>
-                                </div>
-                                <span class="status-badge status-confirmed mt-2 md:mt-0 self-start">
-                                    Confirmed
-                                </span>
-                            </div>
-
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                                <div>
-                                    <p class="text-gray-400 text-sm mb-1"><i
-                                            class="fas fa-calendar-alt mr-1"></i>Departure</p>
-                                    <p class="font-orbitron text-neon-blue">Mar 15, 2025</p>
-                                </div>
-                                <div>
-                                    <p class="text-gray-400 text-sm mb-1"><i class="fas fa-clock mr-1"></i>Duration</p>
-                                    <p class="font-orbitron text-neon-blue">3 days</p>
-                                </div>
-                                <div>
-                                    <p class="text-gray-400 text-sm mb-1"><i class="fas fa-users mr-1"></i>Passengers
-                                    </p>
-                                    <p class="font-orbitron text-neon-blue">2</p>
-                                </div>
-                                <div>
-                                    <p class="text-gray-400 text-sm mb-1"><i class="fas fa-bed mr-1"></i>Accommodation
-                                    </p>
-                                    <p class="font-orbitron text-neon-blue text-sm">Luxury Suite</p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 pt-4 border-t border-neon-blue/20">
-                                <div class="flex gap-6">
-                                    <div>
-                                        <p class="text-gray-400 text-xs mb-1">Distance</p>
-                                        <p class="text-sm">384,400 km</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-gray-400 text-xs mb-1">Temperature</p>
-                                        <p class="text-sm">-173°C to 127°C</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-gray-400 text-xs mb-1">Total Price</p>
-                                        <p class="text-neon-purple font-bold text-lg">$50,000</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex gap-2">
-                                    <button
-                                        class="px-4 py-2 bg-neon-blue/20 border border-neon-blue text-neon-blue rounded-lg hover:bg-neon-blue/30 transition-colors">
-                                        <i class="fas fa-eye mr-2"></i>View Details
-                                    </button>
-                                    <button
-                                        class="px-4 py-2 bg-red-500/20 border border-red-500 text-red-500 rounded-lg hover:bg-red-500/30 transition-colors">
-                                        <i class="fas fa-times mr-2"></i>Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 
@@ -815,8 +742,101 @@
 
             if (user) {
                 document.getElementById("username").innerText = `${user.firstName} ${user.lastName}`;
+
+                // get user bookings
+                bookingsDB("get", user.username).then(res => {
+                    // show the user bookings
+                    for (const bookingId in res) {
+                        console.log(bookingId)
+                        const booking = res[bookingId];
+                        const destination = booking.destination;
+                        const accommodation = booking.accommodation;
+                        const formattedPrice = booking.totalPrice.toLocaleString();
+
+                        document.getElementById("bookings-container").innerHTML += `
+                <div class="booking-card card-hover p-6 mb-6">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-shrink-0">
+                            <img
+                                class="w-20 h-20 rounded-full bg-gradient-to-r flex items-center justify-center glow"
+                                src="${destination.image}"
+                            >
+                        </div>
+
+                        <div class="flex-1">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                                <div>
+                                    <h3 class="font-orbitron text-2xl mb-1 text-neon-cyan">${destination.name}</h3>
+                                    <p class="text-gray-400 text-sm">Booking ID: ${bookingId}</p>
+                                </div>
+                                <span class="status-badge status-confirmed mt-2 md:mt-0 self-start">
+                                    Confirmed
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                                <div>
+                                    <p class="text-gray-400 text-sm mb-1"><i
+                                            class="fas fa-calendar-alt mr-1"></i>Duration</p>
+                                    <p class="font-orbitron text-neon-blue">${destination.TotalDuration} days</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm mb-1"><i class="fas fa-clock mr-1"></i>Travel Time</p>
+                                    <p class="font-orbitron text-neon-blue">${destination.travelDuration}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm mb-1"><i class="fas fa-users mr-1"></i>Passengers
+                                    </p>
+                                    <p class="font-orbitron text-neon-blue">${booking.passengerNumber}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm mb-1"><i class="fas fa-bed mr-1"></i>Accommodation
+                                    </p>
+                                    <p class="font-orbitron text-neon-blue text-sm">${accommodation.name}</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 pt-4 border-t border-neon-blue/20">
+                                <div class="flex gap-6">
+                                    <div>
+                                        <p class="text-gray-400 text-xs mb-1">Distance</p>
+                                        <p class="text-sm">${destination.distance}</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-xs mb-1">Gravity</p>
+                                        <p class="text-sm">${destination.gravity}</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-xs mb-1">Total Price</p>
+                                        <p class="text-neon-purple font-bold text-lg">$${formattedPrice}</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-2">
+                                    <button
+                                        class="px-4 py-2 bg-neon-blue/20 border border-neon-blue text-neon-blue rounded-lg hover:bg-neon-blue/30 transition-colors"
+                                        data-booking-id="${bookingId}">
+                                        <i class="fas fa-eye mr-2"></i>View Details
+                                    </button>
+                                    <button
+                                        class="px-4 py-2 bg-red-500/20 border border-red-500 text-red-500 rounded-lg hover:bg-red-500/30 transition-colors"
+                                        data-booking-id="${bookingId}">
+                                        <i class="fas fa-times mr-2"></i>Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                    }
+                }).catch(e => {
+
+                })
             } else {
-                window.open("./login.html?redirect=true","_self")
+                window.open("./login.html?redirect=true", "_self")
             }
         </script>
 </body>
